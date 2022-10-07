@@ -3,7 +3,7 @@ class User < ApplicationRecord
   validates :email, presence: true, length: { maximum: 255}, format: {with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i}
   before_validation { email.downcase!}
   validates :email, uniqueness: {message: 'はすでに使用されています'}
-  validates :password, length: { minimum: 6 }
+  validates :password, length: { minimum: 6 }, presence: true
 
   has_secure_password
 
