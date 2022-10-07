@@ -1,7 +1,7 @@
 <h1>アカウント編集ページ</h1>
 <% if @user.errors.any? %>
   <div id="error_explanation">
-    <h2><%= pluralize(@user.errors.count, "error") %> prohibited this <%= @user.name %> from being saved: </h2>
+    <h2><%= @user.errors.count %> 件のエラーのため、アカウントを更新できません。 </h2>
     <ul>
     <% @user.errors.full_messages.each do |message| %>
       <li><%= message %></li>
@@ -19,5 +19,5 @@
   <%= f.label :password_confirmation, "パスワード(確認)" %>
   <%= f.password_field :password_confirmation %><br><br>
   <%= f.submit "登録する" %>
-  <%= link_to "戻る", user_path(current_user.id) %>
 <% end %>
+<%= link_to "戻る", user_path(current_user.id), id: "back" %>

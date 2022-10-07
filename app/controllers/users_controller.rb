@@ -11,7 +11,7 @@ class UsersController < ApplicationController
     if @user.save
       log_in(@user)
       flash[:notice] = 'アカウントを登録しました'
-      redirect_to user_path(@user.id)
+      redirect_to tasks_path
     else
       render :new
     end
@@ -37,7 +37,7 @@ class UsersController < ApplicationController
 
   def destroy
     @user = User.find(params[:id])
-    @user.delete
+    @user.destroy
     flash[:notice] = 'アカウントを削除しました'
     redirect_to new_session_path
   end
